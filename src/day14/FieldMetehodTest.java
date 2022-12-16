@@ -25,8 +25,6 @@ public class FieldMetehodTest {
 
         b.disPlay();     // 多态调用的是子类重写的方法
 
-
-
     }
 
 }
