@@ -64,6 +64,7 @@ class Proxy implements Star {
 	}
 
 	public void sing() {
+		// 调用的是: 对应 Star 多态重写的方法
 		real.sing();
 	}
 

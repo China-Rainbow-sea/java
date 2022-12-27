@@ -52,7 +52,7 @@ interface Flyable{
     void stop();
 
     // Interface abstract methods cannot have body
-    /*public Flyable(){   // 接口是不能有抽象方法的，因为无法 new 实例化对象,
+    /*public Flyable(){   // 接口是不能有构造器的，因为无法 new 实例化对象,
                         // 接口与类的关系是: 实现关系，不是继承关系: 没有子类实例化全过程:调用父类的构造器方法
     }*/
 
