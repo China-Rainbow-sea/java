@@ -25,4 +25,14 @@ public class Architect extends Designer {
     }
 
 
+    @Override
+    public String toString() {
+        return super.getDetails() + "\t架构师\t" + super.getStatus() + "\t\t" + super.getBonus()
+                + "\t\t" + this.stock + "\t\t\t\t\t\t" + super.getEquipment().getDescription();
+    }
+
+    public String getDetailsForTeam() {
+        return super.getTeamBaseDetails() + "\t架构师\t" + super.getBonus() +
+                "\t" + this.stock;
+    }
 }

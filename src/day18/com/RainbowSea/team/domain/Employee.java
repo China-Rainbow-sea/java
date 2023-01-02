@@ -55,4 +55,16 @@ public class Employee {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
+
+    // 这里的Designer extends Programmer 继承的不是 Employee 的父类，
+    // 用于 Designer无法调用到 Employee 中的 toString()方法，没有 super.super.toString()的写法
+    public String getDetails() {
+        return  this.id +"\t" + this.name + "\t" + this.age + "\t" + this.salary;
+    }
+
+    @Override
+    public String toString() {
+        return getDetails();
+    }
 }
