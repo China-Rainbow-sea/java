@@ -133,9 +133,9 @@ public class NameListService {
                 return employees[i];
             }
         }
-
-
+        
+        
         // 没有找到报错异常,// 一般自定义的异常类，基本上是配合 throws 向上抛出异常给调用者处理，
-        throw new TeamException("找不到指定的员工");
+        throw new TeamException("找不到指定的员工");  
     }
 }

@@ -21,7 +21,7 @@ public class Status {
     public String getNAME() {
         return NAME;
     }
-
+    
     @Override
     public String toString() {
         return this.NAME;
