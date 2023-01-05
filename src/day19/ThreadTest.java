@@ -106,10 +106,25 @@ package day19;
 
    start() : 1. 启动当前线程，2.调用当前线程的 run()方法。
    问题:
-   1. 通过对象直接调用run()的方式是无法启动线程的，仅仅只是调用了重写的方法而已
+   1. 通过对象直接调用run()的方式是无法启动线程的，仅仅只是调用了重写的方法而已,一个普通方法的调用
+      > 这其中的 run()方法是由jvm调用的，什么时候调用，执行的过程控制都由操作系统的cpu调度决定的
    2. 再启动一个线程: 遍历 100 以内的偶数，不可以还让已经调用start()的对象创建线程了。会报错:IllegalThreadStateException(非法线程状态异常)
       > 已经调用start()方法创建线程执行线程的对象，不可以再创建线程 start()了.
       > 说白了就是一个实例 new 对象只能创建 start()一个线程(创建线程,调用run()方法)，不可以创建多个线程(),
+      > 想要启动，创建多线程 --> 必须调用 start()方法
+      > 一个线程对象就只能调用一次 start()创建一个线程,如果重复调用(重复创建)，则会抛出异常: IllegalThreadStateException
+      原因如下源码:
+         public synchronized void start() {
+            if (threadStatus != 0)
+                throw new IllegalThreadStateException();
+         }
+
+        private volatile int threadStatus = 0;
+
+        private static synchronized long nextThreadID() {
+        return ++threadSeqNumber;
+        }
+
 
   */
 public class ThreadTest {
