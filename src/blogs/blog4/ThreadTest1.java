@@ -6,7 +6,7 @@ package blogs.blog4;
  */
 public class ThreadTest1 {
     public static void main(String[] args) {
-        Thread thread = new MyThread();  // 多态性
+        Thread thread = new MyThread1();  // 多态性
 
         // 分支线程的创建,启动run()方法
         thread.start();
@@ -53,8 +53,8 @@ public class ThreadTest1 {
 
     public static void main1(String[] args) {
         // 3. 创建 extends Thread 的子类的实例对象
-        MyThread myThread = new MyThread();
-        Thread thread = new MyThread();   // 多态性: 动态绑定
+        MyThread1 myThread = new MyThread1();
+        Thread thread = new MyThread1();   // 多态性: 动态绑定
 
         // 4. 调用Thread中的 start()方法，创建新线程，并启动run()方法
         myThread.start();
@@ -75,7 +75,7 @@ public class ThreadTest1 {
 
 
 // 1. 创建继承 Thread 的类
-class MyThread extends Thread {
+class MyThread1 extends Thread {
     // 2. 重写 Thread 类中的 run()方法:
     // run()方法就是该分支线程要执行代码，处理的业务
     @Override
