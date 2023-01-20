@@ -17,7 +17,7 @@ import java.util.Date;
  * 此外，它们不是线程安全的，不能处理闰秒等。问题
  *
  */
-public class JDK3DateTimeTest {
+public class JDK8DateTimeTest {
 
     @Test
     public void test() {
