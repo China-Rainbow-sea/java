@@ -1,7 +1,7 @@
 package day24;
 
 
-import day18.com.RainbowSea.team.domain.Printer;
+
 import org.junit.Test;
 
 import java.util.*;

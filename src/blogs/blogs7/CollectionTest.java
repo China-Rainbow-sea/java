@@ -126,7 +126,7 @@ public class CollectionTest {
         collection.add("A");
         collection.add(3.14);
         collection.add(true);
-        collection.add(new Person("Tom",19));
+        collection.add(new Person2("Tom",19));
 
         int size = collection.size();  // 返回该集合实际存储的元素的个数，不是集合的容量
         System.out.println(size);
@@ -141,15 +141,15 @@ public class CollectionTest {
 }
 
 
-class Person {
+class Person2 {
     String name;
     int age;
 
-    public Person(){
+    public Person2(){
 
     }
 
-    public Person(String name, int age) {
+    public Person2(String name, int age) {
         this.name = name;
         this.age = age;
     }
