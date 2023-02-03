@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * |---Map 双列数据，存储key-value对的数据，---类似于高中的函数.
  *    |-- HashMap 作为Map的主要实现类，线程不安全的，效率高，存储 null的key 和 value
- *      |-- LinkedHashMap 保证再遍历map元素时，可以按照添加的顺序实现遍历，
+ *      |-- LinkedHashMapTest 保证再遍历map元素时，可以按照添加的顺序实现遍历，
  *           原因: 在原有的HashMap底层结构基础上，添加了一对指针，指向前一个和后一个元素。
  *           对于频繁的遍历操作，此类执行效率高于HashMap
  *    |--TreeMap:保证按照添加的 key-value键值对进行排序，实现排序遍历.此时考虑key的自然排序或定制排序
