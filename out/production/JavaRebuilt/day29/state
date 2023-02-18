@@ -1,0 +1,36 @@
+
+反射机制:
+1.反射机制有什么用 ？？？
+  > 通过Java语言中的反射机制可以操作字节码文件，优点类似于黑客，(可以读和修改字节码文件)
+
+2. 反射机制的相关类在哪个包下 ？？？
+  > java.lang.reflect.*;
+
+2.3 反射机制相关的类有哪些 ？？？？
+  > java.lang.Class ： 代表整个字节码，代表一个类型,代表整个类
+  > java.lang.reflect.Constructor : 代表字节码中的方法字节码 ：代表类中的方法
+  > java.lang.reflect.Field : 代表字节码中的构造方法字节码 : 代表类中的构造方法
+  > java.lang.reflect.Field : 代表字节码中的属性字节码 : 代表类中的成员变量(静态变量 + 实例变量)
+
+
+
+  public class User {
+  // 这个是时属性 Field
+     int no;
+     public User(){}
+
+  // 这个是构造器 Constructor
+     public User (int no) {}
+
+  // 这个是方法 Method()
+     public void setNo(int no) {}
+
+     public int getNo() {
+     return no;
+     }
+  }
+
+
+
+
+
