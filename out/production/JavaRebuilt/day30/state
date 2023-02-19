@@ -1,0 +1,109 @@
+ 1.注解，或者叫做注释，英文单词: Annotation
+2.注解: Annotation 是一种引用数据类型，编译之后也是生成 xxx.class文件。
+
+怎么自定义注解
+ [修饰列表] @interface 注解名 {
+
+ }
+
+ 注解怎么使用，用在什么地方。
+  > 注解使用时的语法格式是:
+   @注解类型名
+
+  > 注解可以出现在类上，属性上，方法上，变量上等......
+    注解还可以出现在注解类型上。 称为元注解
+
+
+
+  JDK 内置了哪些注解呢 ？
+
+  Deprecated 用@Deprecatel 注解的程序元素，不鼓励程序员使用这样的元素。通常是因为它很危险或
+  存在更好的选择。
+  简单的说就是表示过时了的意思
+  Override 表示：一个方法声明打算重写超类(父类)的另一个方法声明。
+
+  SuppressWarnings 指示应该在注解元素(以及包含在该注解元素中所有程序元素中的所有程序元素)
+  中取消显示指定的编译器警告.
+
+
+  元注解：
+  什么是元注解：
+   用来标注 "注解类型" 的 "注解" ，称为元注解
+
+   常见的元注解有哪些？？
+    Target
+    Retention
+
+    关于Target 注解:
+     这是一个元注解：用来标注 "注解类型" 的 "注解"
+     这个Target注解用来标注 "被标注的注解" 可以出现在哪些位置上。
+     Target(ElementType.METHOD) : 表示 "被标志的注解" 只能出现在方法上。
+
+     @Target(value={CONSTRUCTOR, FIELD, LOCAL_VARIABLE, METHOD, PACKAGE, PARAMETER, TYPE})
+     表示该注解可以出现在：
+           构造方法上，
+           字段上，
+           局部变量上，
+           方法上，
+           类上...
+
+
+
+     关于 Retention 注解:
+     这是一个元注解，用来标注："注解类型" 的 "注解"
+     这个Retention 注解用来标注 "被标注的注解" 最终保存在哪里。
+
+     @Retention(RetentionPolicy.SOURCE) : 表示该注解只被保留在Java源文件中。、
+     @Retention(RetentionPolicy.CLASS) : 表示该注解被保存在class文件中
+     @Retention(RetentionPolicy.RUNTIME) : 表示该注解被保存在class文件中，并且可以被反射机制所读取到.
+
+
+   Retention 的源代码:
+
+   // 元注解
+   @Documented
+   @Retention(RetentionPolicy.RUNTIME)
+   @Target(ElementType.ANNOTATION_TYPE)
+   public @interface Retention {
+       /**
+        * Returns the retention policy.
+        * @return the retention policy
+        */
+
+        //属性
+       RetentionPolicy value();
+   }
+
+
+   public enum RetentionPolicy {
+    /**
+     * Annotations are to be discarded by the compiler.
+     */
+    SOURCE,
+
+    /**
+     * Annotations are to be recorded in the class file by the compiler
+     * but need not be retained by the VM at run time.  This is the default
+     * behavior.
+     */
+    CLASS,
+
+   }
+   @Retention(value =RetentionPolicy.CLASS )
+
+
+   Target的源代码:
+   @Documented
+   @Retention(RetentionPolicy.RUNTIME)
+   @Target(ElementType.ANNOTATION_TYPE)
+   public @interface Target {
+       /**
+        * Returns an array of the kinds of elements an annotation type
+        * can be applied to.
+        * @return an array of the kinds of elements an annotation type
+        * can be applied to
+        */
+       ElementType[] value();
+   }
+
+

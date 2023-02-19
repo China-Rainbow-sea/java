@@ -31,6 +31,67 @@
   }
 
 
+  什么是类加载器：
+  专门负责加载类的命令/工具。
+
+  JDK中自带了3个类加载器
+  > 启动类加载器 rt.jar
+  > 扩展类加载器 ext/*.jar
+  > 应用类加载器 classpath
+
+  假设有这样一段代码 :
+  String s = "abc"
+
+  代码在开始执行之前，会将所需要类全部加载到JVM当中。
+  通过类加载器，看到以上代码类加载器会找String.class 文件，
+  找到就加载，那么是怎么进行加载的呢?
+
+  首先通过 "启动类加载器"加载
+   注意: 启动类加载器专门加载：C:\Program Files\jdk1.8.0_101\jre\lib\rt.jar
+   rt.jar 中都是JDK最核心的类库
+
+   如果通过 "启动类加载器" 加载不到的时候。
+   会通过"扩展类加载器" 加载
+     注意:扩展类加载器专门加载：C:\Program Files\jdk1.8.0_101\jre\lib\*.jar
+
+   如果"扩展类加载器" 没有加载到，那么
+   会通过 "应用类加载器" 加载
+    注意: 应用类加载器专门加载：classpath 中的类
+
+
+  java中为了保证类加载的安全，使用了双亲委派机制。
+  优先从启动类加载器中加载，这个称为"父"，"父"无法加载到，
+  再从扩展类加载器中加载。这个称为"母"。双亲委派，如果都加载不到，
+  才会考虑从应用类加载器中加载，直到加载到为止。
+
+
+  如果你只想让一个类的 "静态代码块" 执行的话，你可以怎么做？
+  class.forName("该类的类名")；
+  这样类就加载，类加载的时候，静态代码块执行！！！
+
+
+  关于路径问题：
+  String path = Thread.currentThread().getContextClassLoader().getResource("写相对路径，但是
+  这个相对路径从 src 出发开始找").getPath();
+
+  String path = Thread.currentThread().getContextClassLoader().getResource("a/db").getPath();
+  // 必须保证src下有a目录，a目录下有db
+
+  这种方式是为了获取一个文件的绝对路径。
+  但是该文件要求放在类路径下，换句话说：也就是放到 src 下面。src下是类的根路径。
+
+  直接以流的形式返回:
+  InputStream in = Thread.currentThread().getContextClassLoader().
+                  getResourceAsStream("com/test.properties");
+
+  IO + Properties 怎么快速绑定属性资源文件 ？？？
+   要求: 第一这个文件必须在类路径下：
+   第二这个文件必须是以.properties 结尾。
+   ResourceBundle bundle = ResourceBundle.getBundle("com/test"); //不要加后缀名
+   String value = bundle.getString(key);
+
+
+
 
 
 
