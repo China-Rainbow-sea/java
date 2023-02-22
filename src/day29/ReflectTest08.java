@@ -40,7 +40,7 @@ public class ReflectTest08 {
         Class clazz = Class.forName("java.lang.String");  // 全类名
 
         StringBuilder s = new StringBuilder();
-        s.append(Modifier.toString(Modifier.methodModifiers()) + "\tclass" + clazz.getSimpleName() + "\t" + clazz.getName() + "\t{\n");
+        s.append(Modifier.toString(clazz.getModifiers()) + "\tclass" + clazz.getSimpleName() + "\t" + clazz.getName() + "\t{\n");
 
         Method[] methods = clazz.getDeclaredMethods();
 

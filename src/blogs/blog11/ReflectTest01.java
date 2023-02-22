@@ -5,8 +5,27 @@ package blogs.blog11;
  * 获取Class 对象的三种方式
  */
 public class ReflectTest01 {
-
     public static void main(String[] args) {
+        try {
+            Class<?> clazz = Class.forName("java.lang.String");
+            Class<String> clazz2 = String.class;
+            System.out.println(clazz == clazz2);  // true
+
+            // 因为每个类只有一个 Class 对象，类只会加载一次到内存当中，并只生成一份 .class 文件
+            // 所有对象共用。
+
+            Class clazz3 = Class.forName("blogs.blog11.User");
+            Class clazz4 = User.class;
+            System.out.println(clazz3 == clazz4);  // 返回 true
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public static void main4(String[] args) {
         // 会执行blogs.blog11.User 类中的静态代码块，而不会创建器实例化对象(不会调用该类的构造器)
         Class clazz = null;
         try {
@@ -72,13 +91,9 @@ class User {
     String name;
 
     public User() {
-        System.out.println("User 的构造器");
+
     }
 
-    // 静态代码块
-    static {
-        System.out.println("User 类中的 静态代表块");
-    }
 
 
     @Override
