@@ -51,9 +51,6 @@ public class RegTheory12 {
         System.out.println(content);
 
 
-        // 还可以
-
-
     }
 
 
