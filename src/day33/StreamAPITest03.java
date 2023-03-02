@@ -1,5 +1,7 @@
-package day33.java;
+package day33;
 
+import day33.java.Employee;
+import day33.java.EmployeeData;
 import org.junit.Test;
 
 import java.util.Arrays;

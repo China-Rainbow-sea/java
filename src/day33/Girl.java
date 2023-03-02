@@ -1,4 +1,4 @@
-package day33.java;
+package day33;
 
 public class Girl {
     public int age;

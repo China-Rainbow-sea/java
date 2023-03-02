@@ -1,5 +1,7 @@
-package day33.java;
+package day33;
 
+import day33.Boy;
+import day33.Girl;
 import org.junit.Test;
 
 import java.util.Optional;
