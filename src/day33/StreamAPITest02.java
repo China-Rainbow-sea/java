@@ -136,7 +136,9 @@ public class StreamAPITest02 {
         streamStream.forEach(s->{
             s.forEach(System.out::println);
         });
-        Stream<Stream<Character>> characterStream = list.stream().map(StreamAPITest02::fromStringToStream);
+        System.out.println("********************");
+
+        Stream<Character> characterStream = list.stream().flatMap(StreamAPITest02::fromStringToStream);
         characterStream.forEach(System.out::println);
 
     }
