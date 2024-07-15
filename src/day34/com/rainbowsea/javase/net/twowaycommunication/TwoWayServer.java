@@ -2,8 +2,10 @@ package day34.com.rainbowsea.javase.net.twowaycommunication;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -17,6 +19,7 @@ public class TwoWayServer {
         Socket clientSocket = null;
         BufferedInputStream bufferedInputStream = null;
         BufferedOutputStream bufferedOutputStream = null;
+        BufferedWriter bufferedWriter = null;
 
         try {
             // 创建服务器套接字对象
@@ -42,6 +45,16 @@ public class TwoWayServer {
                 // 把客户端发送过来的图片，保存到本地服务器中
                 bufferedOutputStream.write(bytes, 0, readCount);
             }
+
+            // 刷新
+            bufferedOutputStream.flush();
+
+            // 服务器接收完图片之后给客户端回个话
+             bufferedWriter = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            bufferedWriter.write("你发的图片我已经收到了");
+
+            // 刷新
+            bufferedWriter.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -65,6 +78,12 @@ public class TwoWayServer {
 
             try {
                 bufferedOutputStream.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            try {
+                bufferedWriter.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
